@@ -441,6 +441,9 @@ filtered_emissions_data2 = filtered_emissions_data2.rename(columns={filtered_emi
 
 import requests
 url = "https://raw.githubusercontent.com/Udzf/EV/main/air_quality_per_canton.csv"  # Raw content URL for CSV file
+import requests
+response = requests.get(url)
+data = response.text
 response = requests.get(url)
 data = response.content.decode('utf-8')  # Decode content using UTF-8
 air_quality_per_canton = pd.read_csv(io.StringIO(data))
