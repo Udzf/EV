@@ -89,7 +89,7 @@ filtered_df = df[df['Fuel'] != 'Without motor']
 # Update the original DataFrame
 df = filtered_df
 
-print(df)
+st.write(df)
 
 electricity_sums_by_year = df[df['Fuel'] == 'Electricity'].groupby('Year')['value'].sum() / df.groupby('Year')['value'].sum()
 
@@ -109,10 +109,10 @@ import pandas as pd
 pd.set_option('display.float_format', '{:.10f}'.format)
 
 # Display the DataFrame
-print(electricity_sums_by_year)
+st.write(electricity_sums_by_year)
 
 # Display the result
-print(electricity_sums_by_year)
+st.write(electricity_sums_by_year)
 
 
 
@@ -146,7 +146,7 @@ df_grouped = df_grouped[['Year', 'Fuel', 'Canton', 'Vehicle group / type', 'valu
 df_grouped = df_grouped.sort_values(by=['Fuel', 'Year'])
 
 # Display the result
-print(df_grouped)
+st.write(df_grouped)
 
 df_grouped
 
@@ -178,7 +178,7 @@ plt.tight_layout()  # Adjust layout to prevent labels from overlapping
 plt.show()
 
 percentage_electricity_2024 = fuel_percentage_by_year.loc[fuel_percentage_by_year.index == '2024', 'Electricity'].values[0]
-print(f"Percentage of Electricity in 2024: {percentage_electricity_2024:.2f}%")
+st.write(f"Percentage of Electricity in 2024: {percentage_electricity_2024:.2f}%")
 
 """## Percentage of EV per Canton"""
 
@@ -265,9 +265,9 @@ if response.status_code == 200:
     dataset = pyjstat.Dataset.read(json.dumps(result))
     Canton_data = dataset.write('dataframe')
 
-    print(Canton_data.head())
+    st.write(Canton_data.head())
 else:
-    print(f"Request failed: {response.status_code}\n{response.text}")
+    st.write(f"Request failed: {response.status_code}\n{response.text}")
 
 # Group by 'Canton', 'Year', and 'Fuel' and calculate the sum of 'Value'
 canton_year_fuel_sums = Canton_data.groupby(['Canton', 'Year', 'Fuel'])['value'].sum().reset_index()
@@ -283,7 +283,7 @@ canton_year_fuel_sums['Percentage'] = (canton_year_fuel_sums['value'] / canton_y
 electricity_percentage_by_canton_year = canton_year_fuel_sums[canton_year_fuel_sums['Fuel'] == 'Electricity']
 
 # Display the result
-print(electricity_percentage_by_canton_year[['Canton', 'Year', 'Percentage']])
+st.write(electricity_percentage_by_canton_year[['Canton', 'Year', 'Percentage']])
 
 # Find the canton with the highest percentage
 highest_canton = electricity_percentage_by_canton_year.loc[electricity_percentage_by_canton_year['Percentage'].idxmax(), 'Canton']
@@ -292,8 +292,8 @@ highest_canton = electricity_percentage_by_canton_year.loc[electricity_percentag
 # Find the canton with the lowest percentage
 lowest_canton = electricity_percentage_by_canton_year.loc[electricity_percentage_by_canton_year['Percentage'].idxmin(), 'Canton']
 
-print(f"Canton with the highest percentage: {highest_canton}")
-print(f"Canton with the lowest percentage: {lowest_canton}")
+st.write(f"Canton with the highest percentage: {highest_canton}")
+st.write(f"Canton with the lowest percentage: {lowest_canton}")
 
 # Sort by Percentage in descending order, get the top 2 unique cantons, and convert to a list
 highest_cantons = electricity_percentage_by_canton_year.sort_values(by='Percentage', ascending=False)['Canton'].unique()[:2].tolist()
@@ -301,23 +301,23 @@ highest_cantons = electricity_percentage_by_canton_year.sort_values(by='Percenta
 # Sort by Percentage in ascending order, get the top 2 unique cantons, and convert to a list
 lowest_cantons = electricity_percentage_by_canton_year.sort_values(by='Percentage', ascending=True)['Canton'].unique()[:2].tolist()
 
-print(f"Cantons with the highest percentage: {highest_cantons}")
-print(f"Cantons with the lowest percentage: {lowest_cantons}")
+st.write(f"Cantons with the highest percentage: {highest_cantons}")
+st.write(f"Cantons with the lowest percentage: {lowest_cantons}")
 
-print(electricity_percentage_by_canton_year)
+st.write(electricity_percentage_by_canton_year)
 
 electricity_percentage_by_canton_year['Year'] = pd.to_numeric(electricity_percentage_by_canton_year['Year'])
 electricity_percentage_by_canton_year_2010 = electricity_percentage_by_canton_year[
     (electricity_percentage_by_canton_year['Year'] >= 2007) & (electricity_percentage_by_canton_year['Year'] <= 2022)
 ]
 
-print(electricity_percentage_by_canton_year_2010.head(20))
+st.write(electricity_percentage_by_canton_year_2010.head(20))
 
 # Select the desired columns
 electricity_percentage_by_year_by_canton = electricity_percentage_by_canton_year_2010[['Year', 'Canton', 'Percentage']]
 
 # Display the result
-print(electricity_percentage_by_year_by_canton)
+st.write(electricity_percentage_by_year_by_canton)
 
 # Group by 'Canton' and calculate the mean of 'Percentage'
 average_percentage_by_canton = electricity_percentage_by_canton_year_2010.groupby('Canton')['Percentage'].mean()
@@ -329,7 +329,7 @@ average_percentage_by_canton = average_percentage_by_canton.to_frame(name='Avera
 average_percentage_by_canton = average_percentage_by_canton.reset_index()
 
 # Display the result
-print(average_percentage_by_canton)
+st.write(average_percentage_by_canton)
 
 # Define the cantons to highlight in color
 highlight_cantons = ["Zug", "Zürich", "Bern", "Jura", "Uri","Neuchâtel"]  # Updated highlight_cantons
@@ -380,7 +380,7 @@ data_2024 = electricity_percentage_by_canton_year_2010[electricity_percentage_by
 # Sort by Percentage in ascending order and get the top 2 unique cantons
 lowest_cantons_2024 = data_2024.sort_values(by='Percentage', ascending=True)['Canton'].unique()[:2].tolist()
 
-print(f"Cantons with the lowest percentage in 2024: {lowest_cantons_2024}")
+st.write(f"Cantons with the lowest percentage in 2024: {lowest_cantons_2024}")
 
 # Define the list of cantons to keep
 selected_cantons = ["Zürich", "Zug", "Bern", "Jura", "Uri", "Neuchâtel"]
@@ -389,7 +389,7 @@ selected_cantons = ["Zürich", "Zug", "Bern", "Jura", "Uri", "Neuchâtel"]
 filtered_data = electricity_percentage_by_year_by_canton[electricity_percentage_by_year_by_canton['Canton'].isin(selected_cantons)]
 
 # Display the result
-print(filtered_data)
+st.write(filtered_data)
 
 """## Air quality in Switzerland"""
 
@@ -404,7 +404,7 @@ filtered_emissions_data = emissions_data[emissions_data['year'] >= 2000]
 
 filtered_emissions_data2 = filtered_emissions_data[filtered_emissions_data['year'] != 2023]
 
-print(filtered_emissions_data2)
+st.write(filtered_emissions_data2)
 
 import matplotlib.pyplot as plt
 
@@ -480,19 +480,19 @@ filtered_emissions_data2 = filtered_emissions_data2.reset_index()
 # After reset_index, the previous index is usually named 'index' or similar,
 # but based on your output, it might be the first column.
 # Let's verify the column names after reset_index and then rename.
-print(filtered_emissions_data2.columns)
+st.write(filtered_emissions_data2.columns)
 
 # Assuming the first column is now the 'year' column after reset_index
 filtered_emissions_data2 = filtered_emissions_data2.rename(columns={filtered_emissions_data2.columns[0]: 'year'})
 
 # Display the column names to confirm
-print(filtered_emissions_data2.columns)
+st.write(filtered_emissions_data2.columns)
 
 filtered_emissions_data2.columns.tolist()
 
-print(electricity_sums_by_year.columns.tolist())
+st.write(electricity_sums_by_year.columns.tolist())
 
-print(electricity_sums_by_year)
+st.write(electricity_sums_by_year)
 
 import matplotlib.pyplot as plt
 
@@ -611,13 +611,13 @@ data = response.content.decode('utf-8')  # Decode content using UTF-8
 air_quality_per_canton = pd.read_csv(io.StringIO(data))
 
 # Display the first few rows of the DataFrame
-print(air_quality_per_canton.head(20))
+st.write(air_quality_per_canton.head(20))
 
 # Merge the DataFrames on 'Year' and 'Canton'
 merged_data3 = pd.merge(filtered_data, air_quality_per_canton, on=['Year', 'Canton'], how='inner')
 
 # Display the first few rows of the merged DataFrame
-print(merged_data3.tail(40))
+st.write(merged_data3.tail(40))
 
 """# Correlation between EV and air quality in Switzerland"""
 
@@ -635,7 +635,7 @@ electricity_sums_by_year['year'] = electricity_sums_by_year['year'].astype(int)
 # Merge
 merged_data = pd.merge(filtered_emissions_data2, electricity_sums_by_year, on='year', how='left')
 
-print(merged_data)
+st.write(merged_data)
 
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
@@ -744,10 +744,10 @@ for target in targets:
     rmse = np.sqrt(mean_squared_error(y, y_pred))
 
     # Print results
-    print(f"Predicting {target}:")
-    print(f"   R² Score: {r2:.2f}")
-    print(f"   RMSE: {rmse:.2f}")
-    print()
+    st.write(f"Predicting {target}:")
+    st.write(f"   R² Score: {r2:.2f}")
+    st.write(f"   RMSE: {rmse:.2f}")
+    st.write()
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -791,10 +791,10 @@ def analyze_pollutants(data, feature='% of EV'):
         rmse_poly = np.sqrt(mean_squared_error(y, y_pred_poly))
 
         # Print results
-        print(f"Results for {target}:")
-        print(f"  Linear R^2: {r2_linear:.3f}, RMSE: {rmse_linear:.3f}, Slope: {model_linear.coef_[0]:.3f}")
-        print(f"  Polynomial R^2: {r2_poly:.3f}, RMSE: {rmse_poly:.3f}")
-        print("\n")
+        st.write(f"Results for {target}:")
+        st.write(f"  Linear R^2: {r2_linear:.3f}, RMSE: {rmse_linear:.3f}, Slope: {model_linear.coef_[0]:.3f}")
+        st.write(f"  Polynomial R^2: {r2_poly:.3f}, RMSE: {rmse_poly:.3f}")
+        st.write("\n")
 
         # Plot
         plt.figure(figsize=(8, 6))
@@ -807,7 +807,7 @@ def analyze_pollutants(data, feature='% of EV'):
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-        plt.show()
+st.pyplot(plt.gcf())
 
 # ✅ NOW you call the function
 analyze_pollutants(merged_data)
@@ -828,7 +828,7 @@ def plot_correlation_graph(data, pollutant, title):
     plt.xlabel('Percentage of EVs')
     plt.ylabel(pollutant)
     plt.grid(True)
-    plt.show()
+st.pyplot(plt.gcf())
 
 # Iterate through cantons and plot graphs
 for canton, data in grouped_data:
@@ -845,7 +845,7 @@ data = response.content.decode('utf-8')  # Decode content using UTF-8
 Norway_data = pd.read_csv(io.StringIO(data))
 
 # Display the first few rows of the DataFrame
-print(Norway_data.head())
+st.write(Norway_data.head())
 
 # Commented out IPython magic to ensure Python compatibility.
 # %matplotlib inline
@@ -891,7 +891,7 @@ plt.xlabel('Percentage of EVs')
 plt.ylabel('CO2 due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and CO2 Emissions')
 plt.grid(True)  # Add a grid for better readability
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -926,7 +926,7 @@ plt.xlabel('Percentage of EVs')
 plt.ylabel('PM 10 due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and PM 10 Emissions')
 plt.grid(True)  # Add a grid for better readability
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -961,7 +961,7 @@ plt.xlabel('Percentage of EVs')
 plt.ylabel('NO" due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and NO2 Emissions')
 plt.grid(True)  # Add a grid for better readability
-plt.show()
+st.pyplot(plt.gcf())
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1040,7 +1040,7 @@ data = response.content.decode('utf-8')  # Decode content using UTF-8
 df_data = pd.read_csv(io.StringIO(data))
 
 # Display the first few rows of the DataFrame
-print(df_data.head(23))
+st.write(df_data.head(23))
 
 
 
@@ -1051,7 +1051,7 @@ pd.set_option('display.float_format', '{:.10f}'.format)
 
 # Merge the DataFrames on 'year'
 merged_data2 = pd.merge(filtered_emissions_data2, df_data, on='year', how='left')
-print(merged_data2)
+st.write(merged_data2)
 
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler # Import MinMaxScaler
@@ -1083,7 +1083,7 @@ scaled_df["year"] = year_col.values
 # Reassign to merged_data2
 merged_data2 = scaled_df
 
-print(merged_data2)
+st.write(merged_data2)
 
 import statsmodels.formula.api as smf
 import pandas as pd
@@ -1098,7 +1098,7 @@ formula = 'Q("C02 due to transport (in tonne)") ~ Q("% of EV")'
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Display results
-print(model.summary())
+st.write(model.summary())
 
 import statsmodels.formula.api as smf
 
@@ -1109,7 +1109,7 @@ formula = 'Q("PM 10 due to transport in tonne") ~ Q("% of EV")'
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.write(model.summary())
 
 import statsmodels.formula.api as smf
 
@@ -1120,7 +1120,7 @@ formula = 'Q("Emission of N02 due to transport in 1000 tonne") ~ Q("% of EV") '
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.write(model.summary())
 
 import statsmodels.formula.api as smf
 import pandas as pd
@@ -1135,7 +1135,7 @@ formula = 'Q("C02 due to transport (in tonne)") ~ Q("% of EV") + Q("Number of ve
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Display results
-print(model.summary())
+st.write(model.summary())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1151,7 +1151,7 @@ X = sm.add_constant(X)  # ✅ Correct usage here
 vif_data = pd.DataFrame()
 vif_data["feature"] = X.columns
 vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
-print(vif_data)
+st.write(vif_data)
 
 import statsmodels.formula.api as smf
 
@@ -1162,7 +1162,7 @@ formula = 'Q("PM 10 due to transport in tonne") ~ Q("% of EV") + Q("% of diesel 
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.write(model.summary())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1178,7 +1178,7 @@ X = sm.add_constant(X)  # ✅ Correct usage here
 vif_data = pd.DataFrame()
 vif_data["feature"] = X.columns
 vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
-print(vif_data)
+st.write(vif_data)
 
 import statsmodels.formula.api as smf
 
@@ -1189,7 +1189,7 @@ formula = 'Q("Emission of N02 due to transport in 1000 tonne") ~ Q("% of EV") + 
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.write(model.summary())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1205,7 +1205,7 @@ X = sm.add_constant(X)  # ✅ Correct usage here
 vif_data = pd.DataFrame()
 vif_data["feature"] = X.columns
 vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
-print(vif_data)
+st.write(vif_data)
 
 import statsmodels.formula.api as smf
 
@@ -1216,7 +1216,7 @@ formula = 'Q("NMVOCs due to transport in 1000 tonne") ~ Q("% of EV") + Q("Number
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.write(model.summary())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1233,7 +1233,7 @@ X = sm.add_constant(X)  # ✅ Correct usage here
 vif_data = pd.DataFrame()
 vif_data["feature"] = X.columns
 vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
-print(vif_data)
+st.write(vif_data)
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1250,7 +1250,7 @@ X = sm.add_constant(X)  # ✅ Correct usage here
 vif_data = pd.DataFrame()
 vif_data["feature"] = X.columns
 vif_data["VIF"] = [variance_inflation_factor(X.values, i) for i in range(X.shape[1])]
-print(vif_data)
+st.write(vif_data)
 
 import pandas as pd
 import seaborn as sns
@@ -1271,7 +1271,7 @@ correlation_matrix = merged_data2[columns_of_interest].corr()
 plt.figure(figsize=(10, 6))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Matrix of Predictors")
-plt.show()
+st.pyplot(plt.gcf())
 
 """# Prediction
 
@@ -1295,7 +1295,7 @@ model = LinearRegression(fit_intercept= True)
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 
 #Model prediction from X_test
 predictions = model.predict(X_test)
@@ -1307,18 +1307,18 @@ mae = mean_absolute_error(y_test, predictions)
 mse = mean_squared_error(y_test, predictions)
 r2 = r2_score(y_test, predictions)
 
-print(f"MAE: {mae:0.2f}")
-print(f"MSE: {mse:0.2f}")
-print(f"R\u00b2: {r2:0.2f} " )
+st.write(f"MAE: {mae:0.2f}")
+st.write(f"MSE: {mse:0.2f}")
+st.write(f"R\u00b2: {r2:0.2f} " )
 
 predictions_train = model.predict(X_train)
 mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
 
 """### Prediction for CO2 with Multivariate linear regression
 
@@ -1338,9 +1338,9 @@ model = LinearRegression()
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 # 4. Print the coefficients of the linear model
-print("Intercept: ", model.intercept_[0])
+st.write("Intercept: ", model.intercept_[0])
 model_coeff = pd.DataFrame(model.coef_.flatten(),
                      index=['% of EV','Number of vehicles register in CH','The share (in %) of public transport in total motorized passenger transport'],
                      columns=['Coefficients multivariate model'])
@@ -1360,9 +1360,9 @@ mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
 
 """### Polynomial regression"""
 
@@ -1399,9 +1399,9 @@ mae_train = mean_absolute_error(y_train, y_pred_train)
 mse_train = mean_squared_error(y_train, y_pred_train)
 r2_train = r2_score(y_train, y_pred_train)
 
-print(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
-print(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
-print(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
+st.write(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
+st.write(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
+st.write(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
 
 """### Polynomial regression with multivariable"""
 
@@ -1442,9 +1442,9 @@ mse_test = mean_squared_error(y_test, y_pred_test)
 r2_test = r2_score(y_test, y_pred_test)
 
 # Step 6: Print results
-print(f"MAE test set: {mae_test:.2f}, MAE train set: {mae_train:.2f}")
-print(f"MSE test set: {mse_test:.2f}, MSE train set: {mse_train:.2f}")
-print(f"R² test set: {r2_test:.3f}, R² train set: {r2_train:.3f}")
+st.write(f"MAE test set: {mae_test:.2f}, MAE train set: {mae_train:.2f}")
+st.write(f"MSE test set: {mse_test:.2f}, MSE train set: {mse_train:.2f}")
+st.write(f"R² test set: {r2_test:.3f}, R² train set: {r2_train:.3f}")
 
 """### Lazypredict"""
 
@@ -1489,7 +1489,7 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 # Remove LightGBM from model results
 models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
@@ -1505,9 +1505,9 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
-print(models_filtered.sort_values(by="R-Squared", ascending=False).head(20))
+st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(20))
 
 """### Lazypredict with multivariable"""
 
@@ -1545,7 +1545,7 @@ models = models[~models.index.astype(str).str.contains("LightGBM", case=False)]
 models = models.dropna()
 
 # Show and plot top 10 models
-print(models.sort_values("R-Squared", ascending=False).head(10))
+st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
 plt.figure(figsize=(10, 6))
@@ -1555,7 +1555,7 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 
 
@@ -1577,7 +1577,7 @@ model = LinearRegression(fit_intercept= True)
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 
 #Model prediction from X_test
 predictions = model.predict(X_test)
@@ -1589,9 +1589,9 @@ mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
 
 """### Prediction for NO2 with Multivariate linear regression
 
@@ -1610,9 +1610,9 @@ model = LinearRegression()
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 # 4. Print the coefficients of the linear model
-print("Intercept: ", model.intercept_[0])
+st.write("Intercept: ", model.intercept_[0])
 model_coeff = pd.DataFrame(model.coef_.flatten(),
                      index=['% of EV','% of diesel in CH','Average temperature'],
                      columns=['Coefficients multivariate model'])
@@ -1632,9 +1632,9 @@ mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
 
 """### Polynomial regression"""
 
@@ -1671,9 +1671,9 @@ mae_train = mean_absolute_error(y_train, y_pred_train)
 mse_train = mean_squared_error(y_train, y_pred_train)
 r2_train = r2_score(y_train, y_pred_train)
 
-print(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
-print(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
-print(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
+st.write(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
+st.write(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
+st.write(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
 
 """### Polynomial regression with multivariable"""
 
@@ -1710,9 +1710,9 @@ mae_train = mean_absolute_error(y_train, y_pred_train)
 mse_train = mean_squared_error(y_train, y_pred_train)
 r2_train = r2_score(y_train, y_pred_train)
 
-print(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
-print(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
-print(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
+st.write(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
+st.write(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
+st.write(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
 
 """### Lazypredict"""
 
@@ -1756,9 +1756,9 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
-print(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
+st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
 
 """### Lazypredict with multivariable"""
 
@@ -1793,7 +1793,7 @@ models = models[~models.index.astype(str).str.contains("LightGBM", case=False)]
 models = models.dropna()
 
 # Show and plot top 10 models
-print(models.sort_values("R-Squared", ascending=False).head(10))
+st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
 plt.figure(figsize=(10, 6))
@@ -1803,7 +1803,7 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 """## Prediction for PM 10
 
@@ -1821,7 +1821,7 @@ model = LinearRegression(fit_intercept= True)
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 
 #Model prediction from X_test
 predictions = model.predict(X_test)
@@ -1833,9 +1833,9 @@ mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE train set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE train set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 train set: {r2_train:0.2f};" )
 
 
 
@@ -1851,9 +1851,9 @@ model = LinearRegression()
 # 2. Use fit
 model.fit(X_train, y_train)
 # 3. Check the score/accuracy
-print("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
+st.write("R\u00b2 Score of the model: ", round(model.score(X_train, y_train), 3))
 # 4. Print the coefficients of the linear model
-print("Intercept: ", model.intercept_[0])
+st.write("Intercept: ", model.intercept_[0])
 model_coeff = pd.DataFrame(model.coef_.flatten(),
                      index=['% of EV','Number of vehicles register in CH','Covid 19','Precipitation per year in mm'],
                      columns=['Coefficients multivariate model'])
@@ -1873,9 +1873,9 @@ mae_train = mean_absolute_error(y_train, predictions_train)
 mse_train = mean_squared_error(y_train, predictions_train)
 r2_train = r2_score(y_train, predictions_train)
 
-print(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
-print(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
-print(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
+st.write(f"MAE test set: {mae:0.2f}; MAE training set: {mae_train:0.2f};")
+st.write(f"MSE test set: {mse:0.2f}; MSE training set: {mse_train:0.2f};")
+st.write(f"R\u00b2 test set: {r2:0.2f}; R\u00b2 training set: {r2_train:0.2f};" )
 
 """### Polynomial regression"""
 
@@ -1912,9 +1912,9 @@ mae_train = mean_absolute_error(y_train, y_pred_train)
 mse_train = mean_squared_error(y_train, y_pred_train)
 r2_train = r2_score(y_train, y_pred_train)
 
-print(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
-print(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
-print(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
+st.write(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
+st.write(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
+st.write(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
 
 """### Polynomial regression with multivariable"""
 
@@ -1951,9 +1951,9 @@ mae_train = mean_absolute_error(y_train, y_pred_train)
 mse_train = mean_squared_error(y_train, y_pred_train)
 r2_train = r2_score(y_train, y_pred_train)
 
-print(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
-print(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
-print(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
+st.write(f"MAE test: {mae_test:.2f}, train: {mae_train:.2f}")
+st.write(f"MSE test: {mse_test:.2f}, train: {mse_train:.2f}")
+st.write(f"R² test: {r2_test:.3f}, train: {r2_train:.3f}")
 
 
 
@@ -1999,9 +1999,9 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
-print(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
+st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
 
 from sklearn.model_selection import train_test_split
 from lazypredict.Supervised import LazyRegressor
@@ -2034,7 +2034,7 @@ models = models[~models.index.astype(str).str.contains("LightGBM", case=False)]
 models = models.dropna()
 
 # Show and plot top 10 models
-print(models.sort_values("R-Squared", ascending=False).head(10))
+st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
 plt.figure(figsize=(10, 6))
@@ -2044,4 +2044,4 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
