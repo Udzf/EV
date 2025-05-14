@@ -813,7 +813,7 @@ grouped_data = merged_data3.groupby('Canton')
 
 # Function to plot correlation graph
 def plot_correlation_graph(data, pollutant, title):
-fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
 plt.figure(figsize=(8, 6))
     sns.regplot(x='Percentage', y=pollutant, data=data)  # Use regplot for scatter with trend line
 plt.title(title)
