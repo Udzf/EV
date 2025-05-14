@@ -5,3 +5,4 @@ pyjstat
 linearmodels
 requests
 streamlit
+lazypredict
