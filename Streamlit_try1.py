@@ -789,15 +789,15 @@ def analyze_pollutants(data, feature='% of EV'):
         # Plot
 fig, ax = plt.subplots()
 plt.figure(figsize=(8, 6))
-        plt.scatter(X, y, label='Data Points')
-        plt.plot(X, y_pred_linear, label='Linear Fit', linestyle='--')
-        plt.plot(X, y_pred_poly, label='Polynomial Fit (Degree 2)', linestyle='-')
-        plt.title(f'% EV vs {target}')
-        plt.xlabel('% of EV')
-        plt.ylabel(target)
-        plt.legend()
-        plt.grid(True)
-        plt.tight_layout()
+plt.scatter(X, y, label='Data Points')
+plt.plot(X, y_pred_linear, label='Linear Fit', linestyle='--')
+plt.plot(X, y_pred_poly, label='Polynomial Fit (Degree 2)', linestyle='-')
+plt.title(f'% EV vs {target}')
+plt.xlabel('% of EV')
+plt.ylabel(target)
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
 st.pyplot(fig)
 
 # ✅ NOW you call the function
@@ -816,10 +816,10 @@ def plot_correlation_graph(data, pollutant, title):
 fig, ax = plt.subplots()
 plt.figure(figsize=(8, 6))
     sns.regplot(x='Percentage', y=pollutant, data=data)  # Use regplot for scatter with trend line
-    plt.title(title)
-    plt.xlabel('Percentage of EVs')
-    plt.ylabel(pollutant)
-    plt.grid(True)
+plt.title(title)
+plt.xlabel('Percentage of EVs')
+plt.ylabel(pollutant)
+plt.grid(True)
 st.pyplot(fig)
 
 # Iterate through cantons and plot graphs
