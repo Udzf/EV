@@ -1327,7 +1327,6 @@ print(f"R² test set: {r2_test:.3f}, R² train set: {r2_train:.3f}")
 
 """### Lazypredict"""
 
-pip install lazypredict
 
 X = merged_data2[['% of EV']]
 y = merged_data2[['C02 due to transport (in tonne)']]
