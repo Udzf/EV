@@ -125,7 +125,7 @@ electricity_sums_by_year.plot(x='Year', y='% of EV', kind='bar')
 plt.xlabel('Year')
 plt.ylabel('% of EV')
 plt.title('Percentage of EV by Year')
-plt.show()
+st.pyplot(plt.gcf())
 
 # Reset the index to make 'Fuel' and 'Year' regular columns
 df_grouped = df.reset_index()
@@ -175,7 +175,7 @@ plt.title('Percentage of Fuel Types by Year')
 plt.legend(title='Fuel Type')
 plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
 plt.tight_layout()  # Adjust layout to prevent labels from overlapping
-plt.show()
+st.pyplot(plt.gcf())
 
 percentage_electricity_2024 = fuel_percentage_by_year.loc[fuel_percentage_by_year.index == '2024', 'Electricity'].values[0]
 st.write(f"Percentage of Electricity in 2024: {percentage_electricity_2024:.2f}%")
@@ -372,7 +372,7 @@ plt.ylabel('Percentage of Electricity')
 plt.title('Percentage of Electricity by Canton and Year')
 plt.grid(True)  # Add grid for better readability
 plt.tight_layout()  # Adjust layout to prevent labels from overlapping
-plt.show()
+st.pyplot(plt.gcf())
 
 # Filter for the year 2024
 data_2024 = electricity_percentage_by_canton_year_2010[electricity_percentage_by_canton_year_2010['Year'] == 2024]
@@ -422,7 +422,7 @@ plt.ylabel('Emissions')  # You might need to adjust the label based on your data
 plt.title('Emissions over Time')
 plt.grid(True)
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))  # Place legend outside the plot
-plt.show()
+st.pyplot(plt.gcf())
 
 filtered_emissions_data2 = filtered_emissions_data2.rename(columns={'year': 'Year'})
 
@@ -469,7 +469,7 @@ axes[1, 1].grid(True)
 plt.tight_layout()
 
 # Show the plot
-plt.show()
+st.pyplot(plt.gcf())
 
 filtered_emissions_data2
 
@@ -528,7 +528,7 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -564,7 +564,7 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -600,7 +600,7 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 """## Air quality per Canton"""
 
@@ -669,7 +669,7 @@ for idx, col in enumerate(target_columns):
 
 # Adjust layout to prevent overlap
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 import numpy as np  # <-- you need numpy for line fitting
@@ -713,7 +713,7 @@ for idx, col in enumerate(target_columns):
 
 # Adjust layout to prevent overlap
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
@@ -856,7 +856,7 @@ Norway_data.plot(x='Year', y='Percentage_of_EVs', kind='bar')
 plt.xlabel('Year')
 plt.ylabel('% of EV')
 plt.title('Percentage of EV by Year')
-plt.show()
+st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -879,7 +879,7 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('CO2 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -914,7 +914,7 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('PM 10 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -949,7 +949,7 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('NO2 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -1024,7 +1024,7 @@ for i in x:
 # Final touches
 plt.ylim(0, 115)
 plt.tight_layout()
-plt.show()
+st.pyplot(plt.gcf())
 
 """# Multivariable OLS
 
