@@ -788,7 +788,7 @@ def analyze_pollutants(data, feature='% of EV'):
 
         # Plot
 fig, ax = plt.subplots()
-        plt.figure(figsize=(8, 6))
+plt.figure(figsize=(8, 6))
         plt.scatter(X, y, label='Data Points')
         plt.plot(X, y_pred_linear, label='Linear Fit', linestyle='--')
         plt.plot(X, y_pred_poly, label='Polynomial Fit (Degree 2)', linestyle='-')
@@ -814,7 +814,7 @@ grouped_data = merged_data3.groupby('Canton')
 # Function to plot correlation graph
 def plot_correlation_graph(data, pollutant, title):
 fig, ax = plt.subplots()
-    plt.figure(figsize=(6, 4))  # Adjust figsize as needed
+plt.figure(figsize=(8, 6))
     sns.regplot(x='Percentage', y=pollutant, data=data)  # Use regplot for scatter with trend line
     plt.title(title)
     plt.xlabel('Percentage of EVs')
