@@ -125,7 +125,6 @@ electricity_sums_by_year.plot(x='Year', y='% of EV', kind='bar')
 plt.xlabel('Year')
 plt.ylabel('% of EV')
 plt.title('Percentage of EV by Year')
-st.pyplot(plt.gcf())
 
 # Reset the index to make 'Fuel' and 'Year' regular columns
 df_grouped = df.reset_index()
@@ -175,7 +174,6 @@ plt.title('Percentage of Fuel Types by Year')
 plt.legend(title='Fuel Type')
 plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
 plt.tight_layout()  # Adjust layout to prevent labels from overlapping
-st.pyplot(plt.gcf())
 
 percentage_electricity_2024 = fuel_percentage_by_year.loc[fuel_percentage_by_year.index == '2024', 'Electricity'].values[0]
 st.write(f"Percentage of Electricity in 2024: {percentage_electricity_2024:.2f}%")
@@ -372,7 +370,6 @@ plt.ylabel('Percentage of Electricity')
 plt.title('Percentage of Electricity by Canton and Year')
 plt.grid(True)  # Add grid for better readability
 plt.tight_layout()  # Adjust layout to prevent labels from overlapping
-st.pyplot(plt.gcf())
 
 # Filter for the year 2024
 data_2024 = electricity_percentage_by_canton_year_2010[electricity_percentage_by_canton_year_2010['Year'] == 2024]
@@ -422,7 +419,6 @@ plt.ylabel('Emissions')  # You might need to adjust the label based on your data
 plt.title('Emissions over Time')
 plt.grid(True)
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))  # Place legend outside the plot
-st.pyplot(plt.gcf())
 
 filtered_emissions_data2 = filtered_emissions_data2.rename(columns={'year': 'Year'})
 
@@ -469,7 +465,6 @@ axes[1, 1].grid(True)
 plt.tight_layout()
 
 # Show the plot
-st.pyplot(plt.gcf())
 
 filtered_emissions_data2
 
@@ -528,7 +523,6 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -564,7 +558,6 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -600,7 +593,6 @@ lines2, labels2 = ax2.get_legend_handles_labels()
 ax2.legend(lines + lines2, labels + labels2, loc='upper left')  # Adjust legend location as needed
 
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 """## Air quality per Canton"""
 
@@ -669,7 +661,6 @@ for idx, col in enumerate(target_columns):
 
 # Adjust layout to prevent overlap
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 import numpy as np  # <-- you need numpy for line fitting
@@ -713,7 +704,6 @@ for idx, col in enumerate(target_columns):
 
 # Adjust layout to prevent overlap
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
@@ -797,6 +787,7 @@ def analyze_pollutants(data, feature='% of EV'):
         st.write("\n")
 
         # Plot
+fig, ax = plt.subplots()
         plt.figure(figsize=(8, 6))
         plt.scatter(X, y, label='Data Points')
         plt.plot(X, y_pred_linear, label='Linear Fit', linestyle='--')
@@ -807,7 +798,7 @@ def analyze_pollutants(data, feature='% of EV'):
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 # ✅ NOW you call the function
 analyze_pollutants(merged_data)
@@ -822,13 +813,14 @@ grouped_data = merged_data3.groupby('Canton')
 
 # Function to plot correlation graph
 def plot_correlation_graph(data, pollutant, title):
+fig, ax = plt.subplots()
     plt.figure(figsize=(6, 4))  # Adjust figsize as needed
     sns.regplot(x='Percentage', y=pollutant, data=data)  # Use regplot for scatter with trend line
     plt.title(title)
     plt.xlabel('Percentage of EVs')
     plt.ylabel(pollutant)
     plt.grid(True)
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 # Iterate through cantons and plot graphs
 for canton, data in grouped_data:
@@ -856,7 +848,6 @@ Norway_data.plot(x='Year', y='Percentage_of_EVs', kind='bar')
 plt.xlabel('Year')
 plt.ylabel('% of EV')
 plt.title('Percentage of EV by Year')
-st.pyplot(plt.gcf())
 
 import matplotlib.pyplot as plt
 
@@ -879,19 +870,19 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('CO2 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Create a scatter plot with a trendline (regression line)
+fig, ax = plt.subplots()
 sns.regplot(x='Percentage_of_EVs', y='CO2_due_to_transport_(tonne)', data=Norway_data)
 
 plt.xlabel('Percentage of EVs')
 plt.ylabel('CO2 due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and CO2 Emissions')
 plt.grid(True)  # Add a grid for better readability
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 import matplotlib.pyplot as plt
 
@@ -914,19 +905,19 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('PM 10 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Create a scatter plot with a trendline (regression line)
+fig, ax = plt.subplots()
 sns.regplot(x='Percentage_of_EVs', y='PM10_due_to_transport_(tonne)', data=Norway_data)
 
 plt.xlabel('Percentage of EVs')
 plt.ylabel('PM 10 due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and PM 10 Emissions')
 plt.grid(True)  # Add a grid for better readability
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 import matplotlib.pyplot as plt
 
@@ -949,19 +940,19 @@ ax2.tick_params(axis='y', labelcolor='tab:blue')
 plt.title('NO2 Emissions vs Percentage of EVs in Norway')
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Create a scatter plot with a trendline (regression line)
+fig, ax = plt.subplots()
 sns.regplot(x='Percentage_of_EVs', y='N2O_due_to_transport_(tonne)', data=Norway_data)
 
 plt.xlabel('Percentage of EVs')
 plt.ylabel('NO" due to transport (tonne)')
 plt.title('Correlation between Percentage of EVs and NO2 Emissions')
 plt.grid(True)  # Add a grid for better readability
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -1024,7 +1015,6 @@ for i in x:
 # Final touches
 plt.ylim(0, 115)
 plt.tight_layout()
-st.pyplot(plt.gcf())
 
 """# Multivariable OLS
 
@@ -1268,10 +1258,11 @@ columns_of_interest = [
 correlation_matrix = merged_data2[columns_of_interest].corr()
 
 # Plot heatmap
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Matrix of Predictors")
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 """# Prediction
 
@@ -1482,6 +1473,7 @@ models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
 import matplotlib.pyplot as plt
 
 models_sorted = models_filtered.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index, models_sorted['R-Squared'])
 plt.xlabel("R² Score")
@@ -1489,7 +1481,7 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 # Remove LightGBM from model results
 models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
@@ -1498,6 +1490,7 @@ models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
 import matplotlib.pyplot as plt
 
 models_sorted = models_filtered.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index, models_sorted['R-Squared'])
 plt.xlabel("R² Score")
@@ -1505,7 +1498,7 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(20))
 
@@ -1548,6 +1541,7 @@ models = models.dropna()
 st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index[:10], models_sorted["R-Squared"][:10])
 plt.xlabel("R² Score")
@@ -1555,7 +1549,7 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 
 
@@ -1749,6 +1743,7 @@ models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
 import matplotlib.pyplot as plt
 
 models_sorted = models_filtered.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index, models_sorted['R-Squared'])
 plt.xlabel("R² Score")
@@ -1756,7 +1751,7 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
 
@@ -1796,6 +1791,7 @@ models = models.dropna()
 st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index[:10], models_sorted["R-Squared"][:10])
 plt.xlabel("R² Score")
@@ -1803,7 +1799,7 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 """## Prediction for PM 10
 
@@ -1992,6 +1988,7 @@ models_filtered = models[~models.index.str.contains("LightGBM", case=False)]
 import matplotlib.pyplot as plt
 
 models_sorted = models_filtered.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index, models_sorted['R-Squared'])
 plt.xlabel("R² Score")
@@ -1999,7 +1996,7 @@ plt.title("Model Performance (Excluding LightGBM)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
 
 st.write(models_filtered.sort_values(by="R-Squared", ascending=False).head(10))
 
@@ -2037,6 +2034,7 @@ models = models.dropna()
 st.write(models.sort_values("R-Squared", ascending=False).head(10))
 
 models_sorted = models.sort_values(by="R-Squared", ascending=False)
+fig, ax = plt.subplots()
 plt.figure(figsize=(10, 6))
 plt.barh(models_sorted.index[:10], models_sorted["R-Squared"][:10])
 plt.xlabel("R² Score")
@@ -2044,4 +2042,4 @@ plt.title("Top 10 Models (LazyPredict)")
 plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
-st.pyplot(plt.gcf())
+st.pyplot(fig)
