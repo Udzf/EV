@@ -446,6 +446,10 @@ response = requests.get(url)
 data = response.text
 response = requests.get(url)
 data = response.content.decode('utf-8')  # Decode content using UTF-8
+import requests
+url = "https://raw.githubusercontent.com/Udzf/EV/main/air_quality_per_canton.csv"
+response = requests.get(url)
+data = response.text
 air_quality_per_canton = pd.read_csv(io.StringIO(data))
 
 # Merge the DataFrames on 'Year' and 'Canton'
