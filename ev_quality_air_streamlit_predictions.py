@@ -1081,7 +1081,7 @@ formula = 'Q("C02 due to transport (in tonne)") ~ Q("% of EV")'
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Display results
-print(model.summary())
+st.text(model.summary().as_text())
 
 """##CO2 - Multivariate OLS"""
 
@@ -1098,7 +1098,7 @@ formula = 'Q("C02 due to transport (in tonne)") ~ Q("% of EV") + Q("The share (i
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Display results
-print(model.summary())
+st.text(model.summary().as_text())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1125,7 +1125,7 @@ formula = 'Q("PM 10 due to transport in tonne") ~ Q("% of EV")'
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.text(model.summary().as_text())
 
 """##PM 10 - Multivariate OLS"""
 
@@ -1138,7 +1138,7 @@ formula = 'Q("PM 10 due to transport in tonne") ~ Q("% of EV") + Q("% of diesel 
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.text(model.summary().as_text())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
@@ -1164,7 +1164,7 @@ formula = 'Q("Emission of N02 due to transport in 1000 tonne") ~ Q("% of EV") '
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.text(model.summary().as_text())
 
 """##NO2 - Multivariate OLS"""
 
@@ -1177,7 +1177,7 @@ formula = 'Q("Emission of N02 due to transport in 1000 tonne") ~ Q("% of EV") + 
 model = smf.ols(formula=formula, data=merged_data2).fit()
 
 # Print summary
-print(model.summary())
+st.text(model.summary().as_text())
 
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import statsmodels.api as sm  # ← this is the correct module for add_constant
