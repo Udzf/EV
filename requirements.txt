@@ -6,4 +6,3 @@ linearmodels
 requests
 streamlit
 lazypredict
-scikit-learn
