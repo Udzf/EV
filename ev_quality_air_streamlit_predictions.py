@@ -1945,27 +1945,3 @@ plt.gca().invert_yaxis()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
-
-# --- Correlation Matrix Heatmap ---
-
-import streamlit as st
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Select only the numeric predictor columns you're using
-columns_of_interest = [
-    "% of EV", "Number of vehicles register in CH", "% of diesel in CH",
-    "The share (in %) of public transport in total motorized passenger transport",
-    "Winter average temperature", "Average temperature",
-    "Precipitation per year in mm"
-]
-
-# Create correlation matrix
-correlation_matrix = merged_data2[columns_of_interest].corr()
-
-# Plot heatmap
-plt.figure(figsize=(10, 6))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-plt.title("Correlation Matrix of Predictors")
-st.pyplot(plt)
