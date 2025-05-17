@@ -15,11 +15,13 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ## 📌 Objectives
 
-- Analyze trends in CO₂, NO₂, PM10, and NMVOCs emissions due to transport
+- Analyze trends in CO₂, NO₂, and PM10, emissions due to transport
 - Measure how EV share correlates with pollution decline
 - Compare Switzerland with Norway for context
 - Look at canton-level air quality and EV sales
 - Use regression models to assess relationships and potential causality
+- Use prediction train model ...
+- ...
 
 ---
 
@@ -31,6 +33,7 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 - Polynomial regression
 - Variance Inflation Factor (VIF) analysis
 - Heatmaps and regression plots
+- ...
 
 ---
 
@@ -38,11 +41,11 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 - Python (Pandas, Seaborn, Matplotlib, Scikit-learn)
 - Jupyter Notebooks
-- LaTeX (for the final report & slides)
+- ...
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure ( to modify)
 
 📁 data/ # Raw and cleaned data files
 📁 figures/ # All plots and visualizations
@@ -64,7 +67,9 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ## 📺 Presentation
 
-🎥 A short summary video and slide deck are available in the `presentation/` folder.
+🎥 A short summary video and slide deck are available in 
+- youtube link
+- ...
 
 ---
 
