@@ -6,8 +6,8 @@ This project explores whether the rise of electric vehicles (EVs) in Switzerland
 
 ## 👥 Team
 
-- Omar Abbassi  
-- Simon Chapatte
+- Omar Abbassi  data searching, cleaning, Eda, correlation,
+- Simon Chapatte data, correlation, trend , machine learning, regression
 
 GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
@@ -29,19 +29,15 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 - Exploratory Data Analysis (EDA)
 - Correlation matrix & Pearson coefficient
-- Simple and multiple OLS regression
-- Polynomial regression
+- Simple and multivariate OLS regression
 - Variance Inflation Factor (VIF) analysis
+- Covariance matrix analysis
+- Polynomial regression
+- Lazypredict for simple and multivariatre model
 - Heatmaps and regression plots
-- ...
 
 ---
 
-## 🧪 Technologies
-
-- Python (Pandas, Seaborn, Matplotlib, Scikit-learn)
-- Jupyter Notebooks
-- ...
 
 ---
 
