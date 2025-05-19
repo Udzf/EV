@@ -8,6 +8,7 @@ This project explores whether the rise of electric vehicles (EVs) in Switzerland
 ##  Delivery
 
 Presentation video youtube link:
+- https://youtu.be/jfPqPJEd7tM
 
 Stream lit app:
 - https://machine-learning-air.streamlit.app
