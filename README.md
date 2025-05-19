@@ -1,10 +1,10 @@
 # EV
 
-# 🚗 Are Electric Cars Really Helping the Environment?
+# Subject: Are Electric Cars Really Helping the Environment?
 
 This project explores whether the rise of electric vehicles (EVs) in Switzerland has a measurable impact on air quality. Using public datasets and statistical modeling, we examine the correlation between EV adoption and pollutant emissions over time.
 
-## 👥 Team
+## Team
 
 - Omar Abbassi  data searching, cleaning, Eda, correlation,
 - Simon Chapatte data, correlation, trend , machine learning, regression
@@ -13,7 +13,7 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-## 📌 Objectives
+##  Objectives
 
 - Analyze trends in CO₂, NO₂, and PM10, emissions due to transport
 - Measure how EV share correlates with pollution decline
@@ -25,7 +25,7 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-## 🛠️ Methods Used
+##  Methods Used
 
 - Exploratory Data Analysis (EDA)
 - Correlation matrix & Pearson coefficient
@@ -41,18 +41,15 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-## 📂 Project Structure ( to modify)
+##  Project Structure ( to modify)
 
 📁 data/ # Raw and cleaned data files
-📁 figures/ # All plots and visualizations
-📁 notebooks/ # Jupyter analysis notebooks
-📁 presentation/ # Slides and summary video
 📄 README.md # This file
 
 
 ---
 
-## 📈 Key Findings
+##  Key Findings
 
 - EV share is significantly correlated with reduced transport emissions (especially CO₂ and NO₂)
 - However, transport accounts for a small share of total emissions, limiting the overall air quality impact
@@ -61,15 +58,16 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-## 📺 Presentation
+##  Presentation Delivery
 
-🎥 A short summary video and slide deck are available in 
+ A short summary video and slide deck are available in 
 - youtube link
-- ...
+- stream lit app
+- https://machine-learning-air.streamlit.app
 
 ---
 
-## 📊 Data Sources
+##  Data Sources
 
 **National & European Agencies:**
 - [Switzerland Greenhouse Gas Inventory – FOEN](https://www.bafu.admin.ch/bafu/en/home/topics/climate/state/data/greenhouse-gas-inventory.html)
@@ -105,7 +103,7 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-## 📜 License ??? not necessary I guess
+##  License ??? not necessary I guess
 
 This project was completed as part of an academic course at Unil/EPFL Lausanne (Spring 2025).  
 Usage is educational and non-commercial only.
