@@ -7,7 +7,6 @@ This project explores whether the rise of electric vehicles (EVs) in Switzerland
 
 ##  Delivery
 
- A short summary video and slide deck are available in 
 Presentation video youtube link:
 
 Stream lit app:
@@ -23,9 +22,7 @@ Github Repesitory
 ## Team
 
 - Omar Abbassi  data searching, cleaning, Eda, correlation,
-- Simon Chapatte data, correlation, trend , machine learning, regression
-
-GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
+- Simon Chappatte data, correlation, trend , machine learning, regression
 
 ---
 
@@ -36,8 +33,8 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 - Compare Switzerland with Norway for context
 - Look at canton-level air quality and EV sales
 - Use regression models to assess relationships and potential causality
-- Use prediction train model ...
-- ...
+- Use prediction train model 
+  
 
 ---
 
@@ -54,16 +51,6 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-
----
-
-##  Project Structure ( to modify)
-
-📁 data/ # Raw and cleaned data files
-📄 README.md # This file
-
-
----
 
 ##  Key Findings
 
