@@ -1,8 +1,18 @@
 # EV
 
+
 # Subject: Are Electric Cars Really Helping the Environment?
 
 This project explores whether the rise of electric vehicles (EVs) in Switzerland has a measurable impact on air quality. Using public datasets and statistical modeling, we examine the correlation between EV adoption and pollutant emissions over time.
+
+
+##  Delivery
+
+ A short summary video and slide deck are available in 
+- youtube link
+- stream lit app
+- https://machine-learning-air.streamlit.app
+- https://colab.research.google.com/drive/1s85rtMG0IvVqmFwEXz0giZxu5gH3_xy9?usp=sharing#scrollTo=ioT43ubPnxov
 
 ## Team
 
@@ -58,12 +68,7 @@ GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 ---
 
-##  Presentation Delivery
 
- A short summary video and slide deck are available in 
-- youtube link
-- stream lit app
-- https://machine-learning-air.streamlit.app
 
 ---
 
