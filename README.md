@@ -99,10 +99,4 @@ Github Repesitory
 - [Air quality – Norway (SSB)](https://www.ssb.no/en/statbank/list/klimagassn)
 
 
----
-
-##  License ??? not necessary I guess
-
-This project was completed as part of an academic course at Unil/EPFL Lausanne (Spring 2025).  
-Usage is educational and non-commercial only.
 
