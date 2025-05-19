@@ -1,5 +1,4 @@
-# EV
-
+GitHub: [https://github.com/Udzf/EV](https://github.com/Udzf/EV)
 
 # Subject: Are Electric Cars Really Helping the Environment?
 
@@ -9,10 +8,17 @@ This project explores whether the rise of electric vehicles (EVs) in Switzerland
 ##  Delivery
 
  A short summary video and slide deck are available in 
-- youtube link
-- stream lit app
+Presentation video youtube link:
+
+Stream lit app:
 - https://machine-learning-air.streamlit.app
+
+ Google colab, notebook
 - https://colab.research.google.com/drive/1s85rtMG0IvVqmFwEXz0giZxu5gH3_xy9?usp=sharing#scrollTo=ioT43ubPnxov
+
+Github Repesitory
+- https://github.com/Udzf/EV
+
 
 ## Team
 
